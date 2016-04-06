@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <string>
 
-#include "code_point_to_utf8.hh"
+#include "json/code_point_to_utf8.hh"
 
 namespace JSON {
 

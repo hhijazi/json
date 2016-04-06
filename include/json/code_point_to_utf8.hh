@@ -50,7 +50,7 @@ namespace JSON {
                     static_cast<char>(first_byte),
                     static_cast<char>(second_byte),
                     static_cast<char>(third_byte) };
-            
+
 
             return { };  // can never happen
         }
