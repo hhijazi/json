@@ -1,42 +1,35 @@
 #include <iostream>
-#include "json/json.hh"
+#include "json/Value.hh"
+#include "json/Object.hh"
+#include "json/Array.hh"
+#include <vector>
+#include <unordered_map>
+#include <map>
+#include <list>
 
 using namespace std;
-using namespace JSON;
 
 int main()
 {
-    // Load JSON file
-
-    Value v = parse_file("tests/comp.json");
-    cerr << v << endl;
-    cerr << "---" << endl;
-
-    // Build object programmatically
-    Object obj;
-
-    obj["foo"] = true;
-    obj["bar"] = 3LL;
-    obj["bar"] = 3L;
-    obj["bar"] = 3;
-
-    Object o;
-    o["failure"] = true;
-    o["success"] = "no way";
-
-    obj["baz"] = o;
-
-    Array a;
-    a.push_back(true);
-    a.push_back("asia");
-    a.push_back("europa");
-    a.push_back(55LL);
-    a.push_back(3.12L);
-    a.push_back(3.12);
-
-    obj["beer"] = a;
-
-    cerr << obj << endl;
-
+    Value<int> v(2);
+    v = 100;
+    v = 1.2;
+    
+    Object<> o;
+    
+    o.set("fucked", 32);
+    
+    Array<> a;
+    
+    a.push_back(20);
+    a.push_back(22);
+//    a.push_back(true);
+    a.push_back<string>("fuck you mate!");
+    
+    cout << a.get<int>(1) << " " << o.get<int>("fucked") << " " << a.get<string>(2) << endl;
+    
+    
+    cout << v.get() << endl;
+    
     return 0;
 }

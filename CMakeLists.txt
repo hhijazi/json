@@ -24,6 +24,5 @@ else()
 endif()
 
 add_definitions(-Wall -Wextra -pedantic)
-
-include_directories(include)
+set(PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
 add_subdirectory(src)

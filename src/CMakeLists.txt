@@ -1,3 +1,7 @@
+include_directories(${PROJECT_INCLUDE_DIR})
+file(GLOB HEADERS ${PROJECT_INCLUDE_DIR} *.hh)
+file(GLOB SOURCES . *.cpp *.cc)
+
 find_package(BISON 2.4 REQUIRED)
 set(BISON_OUTPUT ${json_BINARY_DIR}/json.tab.cc)
 set(BISON_DEFINES ${json_BINARY_DIR}/json.tab.hh)
@@ -28,6 +32,6 @@ if(FLEX_FOUND)
 set_source_files_properties(${FLEX_OUTPUT} PROPERTIES COMPILE_FLAGS "-Wno-deprecated-register")
 endif(FLEX_FOUND)
 
-add_library(json json_st.cc ${json_BINARY_DIR}/lex.yy.cc ${json_BINARY_DIR}/json.tab.cc)
+add_library(json ${SOURCES} ${json_BINARY_DIR}/lex.yy.cc ${json_BINARY_DIR}/json.tab.cc ${HEADERS})
 
 add_subdirectory(test)
